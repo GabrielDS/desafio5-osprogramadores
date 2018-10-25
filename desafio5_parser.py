@@ -27,7 +27,7 @@ class ParserDesafio5:
 		return dados_arquivo
 
 	def _questao_1_ranking_media_funcionario(self):
-		start = time.time()
+		# start = time.time()
 		self._funcionario_menor_salario = heapq.nsmallest(len(self._dicionario_funcionarios), self._dicionario_funcionarios, key=lambda s: s['salario'])
 		self._funcionario_maior_salario = heapq.nlargest(len(self._dicionario_funcionarios), self._dicionario_funcionarios, key=lambda s: s['salario'])
 		lista_salarios = np.array([d['salario'] for d in self._dicionario_funcionarios])
@@ -51,11 +51,11 @@ class ParserDesafio5:
 
 		print(f'global_avg|{"{0:.2f}".format(statistics.mean(lista_salarios.shape))}')
 
-		end = time.time()
-		print(f'Part 1 - Tempo: {end - start}')
+		# end = time.time()
+		# print(f'Part 1 - Tempo: {end - start}')
 
 	def _questao_2_ranking_media_area(self):
-		start = time.time()
+		# start = time.time()
 		salario_maior = self._funcionario_maior_salario[0].get('salario')
 		for funcionario in self._funcionario_maior_salario:
 			if salario_maior == funcionario.get("salario"):
@@ -79,12 +79,12 @@ class ParserDesafio5:
 			lista_salario = [d['salario'] for d in self._dicionario_funcionarios if(d.get("area") == item)]
 			print(f'area_avg|{self._dicionario_areas[item]}|{"{0:.2f}".format(statistics.mean(lista_salario))}')
 
-		end = time.time()
-		print(f'Part 2 - Tempo: {end - start}')
+		# end = time.time()
+		# print(f'Part 2 - Tempo: {end - start}')
 
 	def _questao_3_maior_menor_numero_funcionarios(self):
 		lista_area = [d['area'] for d in self._dicionario_funcionarios]
-		start = time.time()
+		# start = time.time()
 		word_counts = Counter(lista_area)
 		area_mais_funcionario = word_counts.most_common(len(lista_area))[0]
 		area_menos_funcionario = word_counts.most_common(len(lista_area)).pop()
@@ -92,11 +92,11 @@ class ParserDesafio5:
 		print(f'least_employees|{self._dicionario_areas[area_menos_funcionario[0]]}|{area_menos_funcionario[1]}')
 		print(f'most_employees|{self._dicionario_areas[area_mais_funcionario[0]]}|{area_mais_funcionario[1]}')
 
-		end = time.time()
-		print(f'Part 3 - Tempo: {end - start}')
+		# end = time.time()
+		# print(f'Part 3 - Tempo: {end - start}')
 
 	def _questao_4_maiores_salarios_pelo_sobrenome(self):
-		start = time.time()
+		# start = time.time()
 		todos_sobrenomes = [d['sobrenome'] for d in self._dicionario_funcionarios]
 
 		word_counts = Counter(todos_sobrenomes)
@@ -110,8 +110,8 @@ class ParserDesafio5:
 				continue
 			break
 
-		end = time.time()
-		print(f'Part 4 - Tempo: {end - start}')
+		# end = time.time()
+		# print(f'Part 4 - Tempo: {end - start}')
 
 	def output_geral(self):
 		self._questao_1_ranking_media_funcionario()
@@ -120,9 +120,9 @@ class ParserDesafio5:
 		self._questao_4_maiores_salarios_pelo_sobrenome()
 
 if __name__ == '__main__':
-	start = time.time()
+	# start = time.time()
 	arquivo = sys.argv[1]
 	parser = ParserDesafio5(arquivo)
 	parser.output_geral()
-	end = time.time()
-	print(f'Tempo: {end - start}')
+	# end = time.time()
+	# print(f'Tempo: {end - start}')
